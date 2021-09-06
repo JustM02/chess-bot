@@ -1,0 +1,80 @@
+#container {
+    display: flex;
+    flex-flow: column;
+    margin: 0;
+    background: white;
+    height: 100%;
+}
+
+#nav-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    list-style: none;
+    margin: 0;
+    background: lightgray;
+    height: 15%;
+}
+
+#nav-header > div {
+    text-decoration: none;
+    display: block;
+    padding: 1%;
+    color: white;
+}
+
+#nav-header > div:hover {
+    background: gray;
+    cursor: pointer;
+}
+
+#body {
+    display: flex;
+    height: auto;
+    width: auto;
+    background: lightgray;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: 40px repeat(8, 75px);
+    grid-template-rows: auto;
+    background: lightgray;
+    margin: 50px;
+    outline: black solid 2px;
+}
+
+.column {
+    display: flex;
+    flex-flow: column-reverse;
+}
+
+.assist {
+    outline: black solid 2px;
+    border-right: 2px solid black;
+}
+
+.indicator {
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column > div {
+    height: 75px;
+}
+
+.column > div:first-child {
+    height: 40px;
+}
+
+.light {
+    background: white;
+}
+
+.dark {
+    background: darkgray;
+}
+
