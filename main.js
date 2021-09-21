@@ -73,26 +73,38 @@ function loadPieces(tiles) {
     //Load all pieces onto board and update browser display
     //Initialize pawns
     for(let i = 0, tileNum = 2; i < 8; i++) {
-        board.addPiece(tileNum, 1);
+        board.addPiece(tileNum, 1, "white");
+        tileNum += 8;
+    }
+    for(let i = 0, tileNum = 7; i < 8; i++) {
+        board.addPiece(tileNum, 1, "black");
         tileNum += 8;
     }
     //Initialize knights
-    board.addPiece(9, 2);
-    board.addPiece(49, 2);
+    board.addPiece(9, 2, "white");
+    board.addPiece(49, 2, "white");
+    board.addPiece(16, 2, "black");
+    board.addPiece(56, 2, "black");
 
     // Initialize bishops
-    board.addPiece(17, 3);
-    board.addPiece(41, 3);
+    board.addPiece(17, 3, "white");
+    board.addPiece(41, 3, "white");
+    board.addPiece(24, 3, "black");
+    board.addPiece(48, 3, "black");
 
     // Initialize rooks
-    board.addPiece(1, 4);
-    board.addPiece(57, 4);
+    board.addPiece(1, 4, "white");
+    board.addPiece(57, 4, "white");
+    board.addPiece(8, 4, "black");
+    board.addPiece(64, 4, "black");
 
     // Initialize queens
-    board.addPiece(25, 5);
+    board.addPiece(25, 5, "white");
+    board.addPiece(32, 5, "black");
 
     // Initialize kings
-    board.addPiece(33, 6);
+    board.addPiece(33, 6, "white");
+    board.addPiece(40, 6, "black");
 
     updateDisplay(board);
 }
@@ -118,6 +130,8 @@ function updateDisplay() {
             htmlTile.removeChild(htmlTile.firstChild);
         if(piece != 0) {
             let div = document.createElement("div");
+            if(piece.color == "black")
+                div.className = "black-piece"
             let text = document.createTextNode(piece.display);
             div.appendChild(text);
             htmlTile.appendChild(div);

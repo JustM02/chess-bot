@@ -96,3 +96,7 @@
     border-radius: 50%;
     display: inline-block;
 }
+
+.black-piece {
+    color: darkgray;
+}

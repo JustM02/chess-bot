@@ -1,14 +1,16 @@
 import {getTileNumber} from "./tile dictionary.js";
 
 class Pawn {
-    constructor(tileId) {
+    constructor(tileId, color) {
         // currentTile can be int between 1 and 64, representing a1-h8 tiles.  a1 = 1, a2=2 ... b1=8...h8=64
         this.hasMoved = false;
         this.currentTile = tileId;
         this.pieceId = 1;
         this.display = "Pawn";
+        this.color = color;
         this.validTiles = [];
         this.validSpaces(true);
+        
     }
 
     // Returns array with ints representing which tiles piece can move to
@@ -21,13 +23,24 @@ class Pawn {
         if(!update) {
             return this.validTiles;
         }
-        let i = this.currentTile;
-        if(this.hasMoved) {
-            this.validTiles = [i + 1];
-            return [i + 1];
+        if(this.color == "white") {
+            let i = this.currentTile;
+            if(this.hasMoved) {
+                this.validTiles = [i + 1];
+                return [i + 1];
+            } else {
+                this.validTiles = [i + 1, i + 2];
+                return [i + 1, i + 2];
+            }
         } else {
-            this.validTiles = [i + 1, i + 2];
-            return [i + 1, i + 2];
+            let i = this.currentTile;
+            if(this.hasMoved) {
+                this.validTiles = [i - 1];
+                return [i - 1];
+            } else {
+                this.validTiles = [i - 1, i - 2];
+                return [i - 1, i - 2];
+            }
         }
     }
 
@@ -41,12 +54,13 @@ class Pawn {
 }
 
 class Knight {
-    constructor(tileId) {
+    constructor(tileId, color) {
         this.currentTile = tileId;
         this.pieceId = 2;
         this.display = "Knight";
         this.validTiles = [];
         this.validSpaces(true);
+        this.color = color;
     }
 
     validSpaces(update) {
@@ -107,12 +121,13 @@ class Knight {
 }
 
 class Bishop {
-    constructor(tileId) {
+    constructor(tileId, color) {
         this.currentTile = tileId;
         this.pieceId = 3;
         this.display = "Bishop"
         this.validTiles = [];
         this.validSpaces(true);
+        this.color = color;
     }
 
     validSpaces(update) {
@@ -130,13 +145,14 @@ class Bishop {
 }
 
 class Rook {
-    constructor(tileId) {
+    constructor(tileId, color) {
         this.currentTile = tileId;
         this.pieceId = 4;
         this.display = "Rook";
         this.hasMoved = false;
         this.validTiles = [];
         this.validSpaces(true);
+        this.color = color;
     }
 
     validSpaces(update) {
@@ -154,12 +170,13 @@ class Rook {
 }
 
 class Queen {
-    constructor(tileId) {
+    constructor(tileId, color) {
         this.currentTile = tileId;
         this.pieceId = 5;
         this.display = "Queen";
         this.validTiles = [];
         this.validSpaces(true);
+        this.color = color;
     }
 
     validSpaces(update) {
@@ -177,7 +194,7 @@ class Queen {
 }
 
 class King {
-    constructor(tileId) {
+    constructor(tileId, color) {
         this.currentTile = tileId;
         this.pieceId = 6;
         this.display = "King";
@@ -185,6 +202,7 @@ class King {
         this.hasMoved = false;
         this.validTiles = [];
         this.validSpaces(true);
+        this.color = color;
     }
 
     validSpaces(update) {
